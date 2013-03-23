@@ -31,6 +31,7 @@ namespace DataBoundApp2
         }
 
         // Handle selection changed on ListBox
+        /*
         private void MainListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // If selected index is -1 (no selection) do nothing
@@ -47,8 +48,8 @@ namespace DataBoundApp2
             // Reset selected index to -1 (no selection)
             MainListBox.SelectedIndex = -1;
             */
-        }
-
+    //    }
+    
         // Load data for the ViewModel Items
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
