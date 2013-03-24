@@ -12,26 +12,27 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using DataBoundApp2.ViewModels;
 
 namespace DataBoundApp2
 {
     public partial class App : Application
     {
-        private static MainViewModel viewModel = null;
+        private static Cards _cardSet = null;
 
         /// <summary>
         /// A static ViewModel used by the views to bind against.
         /// </summary>
         /// <returns>The MainViewModel object.</returns>
-        public static MainViewModel ViewModel
+        public static Cards CardSet
         {
             get
             {
                 // Delay creation of the view model until necessary
-                if (viewModel == null)
-                    viewModel = new MainViewModel();
+                if (_cardSet == null)
+                    _cardSet = new Cards();
 
-                return viewModel;
+                return _cardSet;
             }
         }
 
@@ -81,6 +82,11 @@ namespace DataBoundApp2
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            // Ensure that application state is restored appropriately
+            if (!App.CardSet.IsDataLoaded)
+            {
+                App.CardSet.LoadCards();
+            }
         }
 
         // Code to execute when the application is activated (brought to foreground)
@@ -88,9 +94,9 @@ namespace DataBoundApp2
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
             // Ensure that application state is restored appropriately
-            if (!App.ViewModel.IsDataLoaded)
+            if (!App.CardSet.IsDataLoaded)
             {
-                App.ViewModel.LoadData();
+                App.CardSet.LoadCards();
             }
         }
 

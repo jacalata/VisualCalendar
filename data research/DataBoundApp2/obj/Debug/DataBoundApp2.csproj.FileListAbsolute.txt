@@ -42,3 +42,17 @@ C:\git\VisualCalendar\data research\DataBoundApp2\obj\Debug\DataBoundApp2.pdb
 C:\git\VisualCalendar\data research\DataBoundApp2\obj\Debug\XapCacheFile.xml
 C:\git\VisualCalendar\data research\DataBoundApp2\Bin\Debug\Microsoft.Phone.Controls.dll
 C:\git\VisualCalendar\data research\DataBoundApp2\Bin\Debug\Microsoft.Phone.Controls.xml
+C:\Users\jafitzge\Dropbox\code\VisualCalendar\data research\DataBoundApp2\obj\Debug\App.g.cs
+C:\Users\jafitzge\Dropbox\code\VisualCalendar\data research\DataBoundApp2\obj\Debug\MainPage.g.cs
+C:\Users\jafitzge\Dropbox\code\VisualCalendar\data research\DataBoundApp2\obj\Debug\DataBoundApp2.g.resources
+C:\Users\jafitzge\Dropbox\code\VisualCalendar\data research\DataBoundApp2\Bin\Debug\ApplicationIcon.png
+C:\Users\jafitzge\Dropbox\code\VisualCalendar\data research\DataBoundApp2\Bin\Debug\Background.png
+C:\Users\jafitzge\Dropbox\code\VisualCalendar\data research\DataBoundApp2\Bin\Debug\DataBoundApp2.dll
+C:\Users\jafitzge\Dropbox\code\VisualCalendar\data research\DataBoundApp2\Bin\Debug\DataBoundApp2.pdb
+C:\Users\jafitzge\Dropbox\code\VisualCalendar\data research\DataBoundApp2\Bin\Debug\AppManifest.xaml
+C:\Users\jafitzge\Dropbox\code\VisualCalendar\data research\DataBoundApp2\Bin\Debug\DataBoundApp2.xap
+C:\Users\jafitzge\Dropbox\code\VisualCalendar\data research\DataBoundApp2\Bin\Debug\Microsoft.Phone.Controls.dll
+C:\Users\jafitzge\Dropbox\code\VisualCalendar\data research\DataBoundApp2\Bin\Debug\Microsoft.Phone.Controls.xml
+C:\Users\jafitzge\Dropbox\code\VisualCalendar\data research\DataBoundApp2\obj\Debug\DataBoundApp2.dll
+C:\Users\jafitzge\Dropbox\code\VisualCalendar\data research\DataBoundApp2\obj\Debug\DataBoundApp2.pdb
+C:\Users\jafitzge\Dropbox\code\VisualCalendar\data research\DataBoundApp2\obj\Debug\XapCacheFile.xml

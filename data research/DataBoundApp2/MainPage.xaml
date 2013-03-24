@@ -12,68 +12,40 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Landscape"  Orientation="Landscape"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="False">
 	<phone:PhoneApplicationPage.Resources>
-		<Style x:Key="ListBoxItemStyle1" TargetType="ListBoxItem">
-			<Setter Property="Template">
-				<Setter.Value>
-					<ControlTemplate TargetType="ListBoxItem">
-						<Grid>
-							<VisualStateManager.VisualStateGroups>
-								<VisualStateGroup x:Name="CommonStates">
-                                    <VisualState x:Name="Normal">
-                                    </VisualState>
-                                    <VisualState x:Name="MouseOver"/>
-								</VisualStateGroup>
-								<VisualStateGroup x:Name="FocusStates">
-                                    <VisualState x:Name="Unfocused">
-                                    </VisualState>
-                                </VisualStateGroup>
-								<VisualStateGroup x:Name="SelectionStates">
-									<VisualState x:Name="Selected">
-										<Storyboard>
-											<DoubleAnimation Duration="0" To="300" Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="ContentContainer" d:IsOptimized="True"/>
-										</Storyboard>
-									</VisualState>
-                                    <VisualState x:Name="SelectedUnfocused">
-                                    </VisualState>
-
-                                </VisualStateGroup>
-							</VisualStateManager.VisualStateGroups>
-							
-							<StackPanel x:Name="ContentContainer" Width="240" Height="480">
-								<Image x:Name="eventImage" Source="{Binding ImageSource}" />
-							</StackPanel>
-						</Grid>
-					</ControlTemplate>
-				</Setter.Value>
-			</Setter>
-		</Style>
-	</phone:PhoneApplicationPage.Resources>
+		</phone:PhoneApplicationPage.Resources>
 
     
 <!-- todo add accessible name from title-->
-            <StackPanel x:Name="Calendar" Orientation="Horizontal">
-        <Image x:Name="previous" Source="{Binding imageUri}" Width="240" Height="240" Margin="1"></Image>
-        <Image x:Name="current" Source="{Binding imageUri}" Width="300" Height="300" Margin="1"></Image>
-        <Image x:Name="next" Source="{Binding imageUri}" Width="240" Height="240"  Margin="1"/>
-            </StackPanel> 
-            
-            <!--
-            <ListBox x:Name="MainListBox" 
-			
-			SelectionChanged="MainListBox_SelectionChanged"
-			ItemContainerStyle="{StaticResource ListBoxItemStyle1}"
-            ItemsSource="{Binding Items}">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                         <StackPanel Orientation="Horizontal" Margin="0,0,0,17">
-                        </StackPanel>
+  
 
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-           
-            </ListBox>
- -->
+    <ListBox x:Name="MainListBox" 
+			SelectionChanged="MainListBox_SelectionChanged"
+            ItemsSource="{Binding}" >
+        <ListBox.ItemsPanel>
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Horizontal" 
+                            Margin="0" 
+                            VerticalAlignment="Center" >
+                </StackPanel>
+
+            </ItemsPanelTemplate>
+        </ListBox.ItemsPanel>
+        <ListBox.ItemTemplate>
+            <DataTemplate>
+                <StackPanel 
+                    x:Name="ContentContainer" 
+                    Margin="0">
+                    <Image x:Name="image" Source="{Binding imageUri}" 
+                    VerticalAlignment="Bottom"
+                    Width="{Binding width}" 
+                    Height="{Binding height}"
+                           Margin="5"/>
+            </StackPanel>
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+
+    </ListBox>
 
 </phone:PhoneApplicationPage>
