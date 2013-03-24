@@ -86,13 +86,6 @@ namespace VisualCalendar.ViewModels
             }*/
 
             appointments.SearchCompleted += new EventHandler<AppointmentsSearchEventArgs>(appointments_SearchCompleted);
-            // TODO choose an account to look at the calendar for. 
-            /*
-             *  foreach (Account acct in (new Appointments()).Accounts)
-            {
-                appts.SearchAsync(start, end, 20, acct, "Appointments Test " + acct.Kind.ToString());
-            }
-             */
             appointments.SearchAsync(DateTime.Today.AddDays(-1), DateTime.Today.AddDays(2), account, null); // find all events today
         }
 
@@ -103,7 +96,7 @@ namespace VisualCalendar.ViewModels
             {
                 // error, OR no events for the day
                 // display a single question mark tile
-                this.currentCard = new Card("unscheduled");
+                this.currentCard = new Card("free time");
             }
             else
             {
@@ -111,13 +104,13 @@ namespace VisualCalendar.ViewModels
 
             }
             //fill in prev/current/next as unscheduled if there is nothing available for any of them
-            if (prevCard == null) prevCard = new Card("unscheduled");
+            if (prevCard == null) prevCard = new Card("free time");
             currentCards.Add(prevCard);
-            if (currentCard == null) currentCard = new Card("unscheduled");
+            if (currentCard == null) currentCard = new Card("free time");
             currentCard.height = 280;
             currentCard.width = 280;
             currentCards.Add(currentCard);
-            if (nextCard == null) nextCard = new Card("unscheduled");
+            if (nextCard == null) nextCard = new Card("free time");
             currentCards.Add(nextCard);
             IsDataLoaded = true;
 
@@ -145,7 +138,7 @@ namespace VisualCalendar.ViewModels
                     this.nextCard = newCard; // this is the first 'not yet' event we've seen
                     if (this.currentCard == null) //nothing was scheduled now
                     {
-                        this.currentCard = new Card("freetime"); //show 'free time' if there is no event right now'
+                        this.currentCard = new Card("free time"); //show 'free time' if there is no event right now'
                         this.Add(this.currentCard);
                     }
                 }
@@ -181,6 +174,8 @@ namespace VisualCalendar.ViewModels
             CreateNewEventType("computer", "\\images\\computer.png");
             CreateNewEventType("computer time", "\\images\\computertime.png");
             CreateNewEventType("dinner", "\\images\\lunchdinner.png");
+            CreateNewEventType("free time", "\\images\\freetime.png");
+            CreateNewEventType("freetime", "\\images\\freetime.png");
             CreateNewEventType("getdressed", "\\images\\getdressed.png");
             CreateNewEventType("get dressed", "\\images\\getdressed.png");
             CreateNewEventType("learningtime", "\\images\\learningtime.png");
