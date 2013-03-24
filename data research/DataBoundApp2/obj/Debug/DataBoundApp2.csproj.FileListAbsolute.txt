@@ -40,3 +40,5 @@ C:\git\VisualCalendar\data research\DataBoundApp2\obj\Debug\DataBoundApp2.g.reso
 C:\git\VisualCalendar\data research\DataBoundApp2\obj\Debug\DataBoundApp2.dll
 C:\git\VisualCalendar\data research\DataBoundApp2\obj\Debug\DataBoundApp2.pdb
 C:\git\VisualCalendar\data research\DataBoundApp2\obj\Debug\XapCacheFile.xml
+C:\git\VisualCalendar\data research\DataBoundApp2\Bin\Debug\Microsoft.Phone.Controls.dll
+C:\git\VisualCalendar\data research\DataBoundApp2\Bin\Debug\Microsoft.Phone.Controls.xml

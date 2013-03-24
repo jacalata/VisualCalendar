@@ -4,59 +4,89 @@ using System.Linq;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
+using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Shell;
+//using DataBoundApp2.Resources;
+using DataBoundApp2.ViewModels;
+
+using Microsoft.Phone.UserData; //calendar data
 
 
 namespace DataBoundApp2
 {
     public partial class MainPage : PhoneApplicationPage
     {
-
-        //ooh. store current selection so we know which item to mark as unselected by hand
-        private int currentlySelectedIndex = -1;
+        Appointments appointments = new Appointments();
+        public Cards cards = new Cards();
 
         // Constructor
         public MainPage()
         {
             InitializeComponent();
 
-            // Set the data context of the listbox control to the sample data
-            DataContext = App.ViewModel;
-            this.Loaded += new RoutedEventHandler(MainPage_Loaded);
+            // Set the data context of the LongListSelector control to the sample data
+            appointments.SearchCompleted += new EventHandler<AppointmentsSearchEventArgs>(appointments_SearchCompleted);
+            // TODO choose an account to look at the calendar for. 
+            appointments.SearchAsync(DateTime.Today, DateTime.Today.AddDays(1), null); // find all events today
         }
 
-        // Handle selection changed on ListBox
-        /*
-        private void MainListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        // on load, we searched the calendar for all of today's events. Now we got them as an enumerator
+        void appointments_SearchCompleted(object sender, AppointmentsSearchEventArgs e)
         {
-            // If selected index is -1 (no selection) do nothing
-            if (MainListBox.SelectedIndex == -1)
-                return;
 
-            /*
-            
-            // find the last selected item and mark it as no longer selected
-            App.ViewModel.Items.ElementAt<ItemViewModel>(currentlySelectedIndex).IsSelected = false;
-            currentlySelectedIndex = MainListBox.SelectedIndex;
-            App.ViewModel.Items.ElementAt<ItemViewModel>(currentlySelectedIndex).IsSelected = true; 
-
-            // Reset selected index to -1 (no selection)
-            MainListBox.SelectedIndex = -1;
-            */
-    //    }
-    
-        // Load data for the ViewModel Items
-        private void MainPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (!App.ViewModel.IsDataLoaded)
+            if (e.Results == null || e.Results.Count() == 0)
             {
-                App.ViewModel.LoadData();
+                // error, OR no events for the day
+                // display a single question mark tile
+                cards.Add(new Card("unscheduled"));
+                // note for ui: this means we might have only one card for the day, need to handle null prev/next cards
+            }
+            CreateCards(e.Results);
+
+            Calendar.DataContext = cards.allCardsToday();
+           //Calendar.DataContext = cards;
+
+        }
+
+        public void CreateCards(IEnumerable<Appointment> appointments)
+        {            
+            // for each event returned, if the title contains VisualCalendar, then
+            foreach (Appointment item in appointments)
+            {
+
+                Card newCard = new Card(item.Subject);
+                if (item.EndTime < DateTime.Now)
+                {
+                    cards.prevCard = newCard; //this can't be current but it might be the most recent
+                }
+                else if (item.StartTime < DateTime.Now && item.EndTime > DateTime.Now && cards.currentCard == null)
+                {
+                    cards.prevCard = newCard; // if there are multiple now, we took the first one
+                }
+                else if (item.StartTime > DateTime.Now && cards.nextCard == null)
+                {
+                    cards.nextCard = newCard; // this is the first 'not yet' event we've seen
+                    if (cards.currentCard == null) //nothing was scheduled now
+                    {
+                        cards.currentCard = new Card("freetime"); //show 'free time' if there is no event right now'
+                        cards.Add(cards.currentCard);
+                    }
+                }
             }
         }
+
+        /* bugbug compile error commented out
+        // Handle selection changed on LongListSelector
+        private void MainLongListSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // If selected item is null (no selection) do nothing
+            if (MainLongListSelector.SelectedItem == null)
+                return;
+
+            // Reset selected item to null (no selection)
+            MainLongListSelector.SelectedItem = null;
+        }
+        */
     }
 }
