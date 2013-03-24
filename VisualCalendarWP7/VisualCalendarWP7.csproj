@@ -94,6 +94,7 @@
     <Content Include="ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="icon200.png" />
     <Content Include="images\bathroom.png" />
     <Content Include="images\bathroombreak.png" />
     <Content Include="images\break.png" />
