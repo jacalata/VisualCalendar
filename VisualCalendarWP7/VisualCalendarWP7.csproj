@@ -9,8 +9,8 @@
     <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataBoundApp2</RootNamespace>
-    <AssemblyName>DataBoundApp2</AssemblyName>
+    <RootNamespace>VisualCalendar</RootNamespace>
+    <AssemblyName>VisualCalendarWP7</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
     <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
@@ -20,9 +20,9 @@
     </SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
-    <XapFilename>DataBoundApp2.xap</XapFilename>
+    <XapFilename>VisualCalendarWP7.xap</XapFilename>
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
-    <SilverlightAppEntry>DataBoundApp2.App</SilverlightAppEntry>
+    <SilverlightAppEntry>VisualCalendar.App</SilverlightAppEntry>
     <ValidateXaml>true</ValidateXaml>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
   </PropertyGroup>
@@ -93,9 +93,7 @@
     <Content Include="images\BUS.jpg" />
     <Content Include="images\DINNER.jpg" />
     <Content Include="images\GETDRESSED.jpg" />
-    <Content Include="images\grilled-pork-chop-dinner-2008.jpg" />
     <Content Include="images\LUNCH.jpg" />
-    <Content Include="images\schoolbus.jpg" />
     <Content Include="images\SNACK.jpg" />
     <Content Include="images\teachtownimages.png" />
     <Content Include="images\TOYS.jpg" />

@@ -8,12 +8,12 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 //using DataBoundApp2.Resources;
-using DataBoundApp2.ViewModels;
+using VisualCalendar.ViewModels;
 
 using Microsoft.Phone.UserData; //calendar data
 
 
-namespace DataBoundApp2
+namespace VisualCalendar
 {
     public partial class MainPage : PhoneApplicationPage
     {
@@ -22,14 +22,7 @@ namespace DataBoundApp2
         public MainPage()
         {
             InitializeComponent();
-
-                MainListBox.DataContext = App.CardSet.currentCards;
-               /* previous.DataContext = App.CardSet.prevCard;
-                titleTextBlock.Text = App.CardSet.prevCard.title;
-                current.DataContext = App.CardSet.currentCard;
-                next.DataContext = App.CardSet.nextCard;
-                //image.Source = (System.Windows.Media.ImageSource)App.CardSet.currentCard.imageUri;
-                * */
+            MainListBox.DataContext = App.CardSet.currentCards;
         }
 
         public void OnNavigatedTo()

@@ -6,7 +6,7 @@ using Microsoft.Phone.UserData; //calendar data
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
-namespace DataBoundApp2.ViewModels
+namespace VisualCalendar.ViewModels
 {
 
     // individual card item for display
@@ -56,7 +56,7 @@ namespace DataBoundApp2.ViewModels
 
         public void LoadCards()
         {
-            // fake data to sort out data binding
+            // fake data 
            /* foreach (string title in CardMapping.GetEventTypes())
             {
                 Card newest = new Card(title);
@@ -69,9 +69,14 @@ namespace DataBoundApp2.ViewModels
                     nextCard = newest;
             }*/
 
-            // Set the data context of the LongListSelector control to the sample data
             appointments.SearchCompleted += new EventHandler<AppointmentsSearchEventArgs>(appointments_SearchCompleted);
             // TODO choose an account to look at the calendar for. 
+            /*
+             *  foreach (Account acct in (new Appointments()).Accounts)
+            {
+                appts.SearchAsync(start, end, 20, acct, "Appointments Test " + acct.Kind.ToString());
+            }
+             */
             appointments.SearchAsync(DateTime.Today.AddDays(-1), DateTime.Today.AddDays(2), null); // find all events today
         }
 
@@ -156,12 +161,12 @@ namespace DataBoundApp2.ViewModels
             CreateNewEventType("lunch", "\\images\\lunch.jpg");
             CreateNewEventType("get dressed", "\\images\\getdressed.jpg");
             CreateNewEventType("bathroom", "\\images\\bathrom.jpg");
-            CreateNewEventType("hands", "\\images\\hands.jpg");
-
+            CreateNewEventType("wash hands", "\\images\\hands.jpg");
         }
 
         private static void CreateNewEventType(string title, string imageUri)
         {
+            // a card might require multiple keywords to be present ('make bed', 'wash hands') 
             knownEvents.Add(title.ToLower());
             imageMappings.Add(title, imageUri);
         }
@@ -169,13 +174,10 @@ namespace DataBoundApp2.ViewModels
         static Dictionary<string, string> imageMappings = new Dictionary<string, string>();
         public static string GetImage(string title)
         {
-            string[] titleWords = title.Split(' ');
-            foreach (string word in titleWords)
+            foreach (string keyword in knownEvents)
             {
-                if (knownEvents.Contains(word.ToLower()))
-                {
-                    return imageMappings[word.ToLower()];
-                }
+                if (title.ToLower().Contains(keyword.ToLower()))
+                    return imageMappings[keyword];
             }
             return unknownEventImage;
         }

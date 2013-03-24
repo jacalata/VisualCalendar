@@ -12,9 +12,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using DataBoundApp2.ViewModels;
+using VisualCalendar.ViewModels;
 
-namespace DataBoundApp2
+namespace VisualCalendar
 {
     public partial class App : Application
     {
@@ -105,6 +105,7 @@ namespace DataBoundApp2
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
         {
             // Ensure that required application state is persisted here.
+            // we don't persist state, just reread the calendar on load. 
         }
 
         // Code to execute when the application is closing (eg, user hit Back)
