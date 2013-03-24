@@ -42,6 +42,7 @@
                     Width="{Binding width}" 
                     Height="{Binding height}"
                            Margin="5"/>
+                    <TextBlock Text="{Binding title}"/>
             </StackPanel>
             </DataTemplate>
         </ListBox.ItemTemplate>

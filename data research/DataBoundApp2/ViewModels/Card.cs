@@ -154,7 +154,7 @@ namespace DataBoundApp2.ViewModels
             CreateNewEventType("lunch", "\\images\\lunch.jpg");
             CreateNewEventType("get dressed", "\\images\\getdressed.jpg");
             CreateNewEventType("bathroom", "\\images\\bathrom.jpg");
-            CreateNewEventType("wash hands", "\\images\\washhands.jpg");
+            CreateNewEventType("hands", "\\images\\hands.jpg");
 
         }
 
@@ -170,8 +170,10 @@ namespace DataBoundApp2.ViewModels
             string[] titleWords = title.Split(' ');
             foreach (string word in titleWords)
             {
-                if (knownEvents.Contains(word.ToLower()) )
-                    return imageMappings[word];
+                if (knownEvents.Contains(word.ToLower()))
+                {
+                    return imageMappings[word.ToLower()];
+                }
             }
             return unknownEventImage;
         }

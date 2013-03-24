@@ -83,6 +83,7 @@
     <None Include="Properties\WMAppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="appIcon.png" />
     <Content Include="ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -98,7 +99,7 @@
     <Content Include="images\SNACK.jpg" />
     <Content Include="images\teachtownimages.png" />
     <Content Include="images\TOYS.jpg" />
-    <Content Include="images\WASHHANDS.jpg" />
+    <Content Include="images\HANDS.jpg" />
     <Content Include="SplashScreenImage.jpg" />
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
