@@ -24,12 +24,6 @@ namespace VisualCalendar
             this.DataContext = accounts;
             AccountsListBox.DataContext = accounts;
             userChosenAccount = accounts.First(); //set a default in case they don't care and just hit next
-            if (accounts.Count < 2)
-            {
-                // there's only the default phone account to look at. Leave it as null so if they add a calendar we read that too.
-                App.CardSet.AccountWasChosen = true;
-                this.NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
-            }
         }
 
         private void OnCalendarChosen(object sender, RoutedEventArgs e)

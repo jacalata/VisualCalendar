@@ -24,6 +24,9 @@ namespace VisualCalendar.ViewModels
         // image source
         public string imageUri { get; set; }
    
+        // url for web details
+        public string webDetailsUri { get; set; }
+
         public Card(string title)
         {
             this.title = title;

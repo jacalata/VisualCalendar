@@ -26,8 +26,9 @@
             <TextBlock Text="choose a calendar" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
             <TextBlock Text="(we'll only ask you this once!)" Margin="9,-7,0,0" Style="{StaticResource PhoneTextNormalStyle}"/>
         </StackPanel>
-        <StackPanel Grid.Row="1">
-           <ListBox x:Name="AccountsListBox" ItemsSource="{Binding}" >
+        <StackPanel Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Horizontal">
+            <ListBox x:Name="AccountsListBox" ItemsSource="{Binding}" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <RadioButton Content="{Binding Name}"                          
@@ -37,7 +38,9 @@
             </ListBox>
             <Button x:Name="DoneButton" Content="Done" 
                     Click="OnCalendarChosen" 
-                    HorizontalAlignment="Center"/>
+                    VerticalAlignment="Bottom"/>
+                
+            </StackPanel>           
         </StackPanel>
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">

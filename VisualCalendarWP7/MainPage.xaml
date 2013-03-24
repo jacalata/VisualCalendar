@@ -9,12 +9,9 @@
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768" 
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
-    Foreground="{StaticResource PhoneAccentBrush}"
+    Background="{StaticResource PhoneAccentBrush}"
     SupportedOrientations="Landscape"  Orientation="Landscape"
     shell:SystemTray.IsVisible="False">
-
-    
-<!-- todo add accessible name from title-->
   
 
     <ListBox x:Name="MainListBox" 
@@ -34,13 +31,20 @@
                 <StackPanel 
                     x:Name="ContentContainer" 
                     Margin="0">
-                    <Image x:Name="image" Source="{Binding imageUri}" 
-                    VerticalAlignment="Bottom"
-                    Width="{Binding width}" 
-                    Height="{Binding height}"
-                           Margin="5"/>
-                    <TextBlock Text="{Binding title}"/>
-            </StackPanel>
+                    <HyperlinkButton 
+                        Style="{StaticResource imageButtonStyle}" 
+                        NavigateUri="http://a11y.info/content/stories/Handling%20Bullying.pptx"
+                        Width="{Binding width}" 
+                        Height="{Binding height}"
+                        >
+                        <HyperlinkButton.Background>
+                            <ImageBrush Opacity="50" ImageSource="{Binding imageUri}"/>
+                        </HyperlinkButton.Background>
+                    </HyperlinkButton >
+                    <!-- wtf? removing this image makes the hyperlink background image disappear too-->
+                    <Image Source="{Binding imageUri}" Visibility="Collapsed"/>
+
+                </StackPanel>
             </DataTemplate>
         </ListBox.ItemTemplate>
 

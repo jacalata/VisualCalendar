@@ -7,6 +7,11 @@
 
     <!--Application Resources-->
     <Application.Resources>
+        <Style x:Name="imageButtonStyle" TargetType="HyperlinkButton">
+            <Setter Property="Margin" Value="10 10 10 10"/>
+            <Setter Property="TargetName" Value="_blank" />
+        </Style>
+
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

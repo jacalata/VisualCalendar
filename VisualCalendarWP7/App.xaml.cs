@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 using System.IO.IsolatedStorage;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Microsoft.Phone.UserData; //calendar data
 using VisualCalendar.ViewModels;
 
 namespace VisualCalendar
@@ -87,10 +88,15 @@ namespace VisualCalendar
         private void RootFrame_Navigating(object sender, NavigatingCancelEventArgs e)
         {
 
+            List<Account> accounts = new List<Account>(new Appointments().Accounts);
             // Only care about intercepting the MainPage if we haven't chosen an account yet
             if (e.Uri.ToString().Contains("/MainPage.xaml") != true 
-                || IsolatedStorageSettings.ApplicationSettings.Contains(App.SelectedAccount) )
+                || IsolatedStorageSettings.ApplicationSettings.Contains(App.SelectedAccount) 
+                || accounts.Count < 2)// there's only the default phone account to look at. Leave it as null so if they add a calendar we read that too.
+            {
                 return;
+            }
+
             // Cancel current navigation and schedule the real navigation for the next tick
             // (we can't navigate immediately as that will fail; no overlapping navigations
             // are allowed)
