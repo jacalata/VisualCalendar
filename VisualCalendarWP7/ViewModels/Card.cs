@@ -143,20 +143,51 @@ namespace DataBoundApp2.ViewModels
     // canonical list of known event types and images for eachs
     public static class CardMapping
     {
-        private static string unknownEventImage = "\\images\\BREAK.jpg";
+        private static string unknownEventImage = "\\images\\question.png";
 
         static CardMapping()
         {
-            CreateNewEventType("unscheduled", "\\images\\BREAK.jpg");
-            CreateNewEventType("bus", "\\images\\BUS.jpg");
-            CreateNewEventType("snack", "\\images\\SNACK.jpg");
-            CreateNewEventType("toys", "\\images\\TOYS.jpg");
-            CreateNewEventType("breakfast", "\\images\\breakfast.jpg");
-            CreateNewEventType("dinner", "\\images\\dinner.jpg");
-            CreateNewEventType("lunch", "\\images\\lunch.jpg");
-            CreateNewEventType("get dressed", "\\images\\getdressed.jpg");
-            CreateNewEventType("bathroom", "\\images\\bathrom.jpg");
-            CreateNewEventType("hands", "\\images\\hands.jpg");
+            CreateNewEventType("unscheduled", "\\images\\break.png");
+            CreateNewEventType("bathroom", "\\images\\bathroombreak.png");
+            CreateNewEventType("bathroombreak", "\\images\\bathroombreak.png");
+            CreateNewEventType("bathroom break", "\\images\\bathroombreak.png");
+            CreateNewEventType("break", "\\images\\break.png");
+            CreateNewEventType("bus", "\\images\\bus.png");
+            CreateNewEventType("calendar", "\\images\\calendar.png");
+            CreateNewEventType("car", "\\images\\car.png");
+            CreateNewEventType("circle", "\\images\\circletime.png");
+            CreateNewEventType("circle time", "\\images\\circletime.png");
+            CreateNewEventType("circletime", "\\images\\circletime.png");
+            CreateNewEventType("computer", "\\images\\computer.png");
+            CreateNewEventType("computer time", "\\images\\computertime.png");
+            CreateNewEventType("getdressed", "\\images\\getdressed.png");
+            CreateNewEventType("get dressed", "\\images\\getdressed.png");
+            CreateNewEventType("learningtime", "\\images\\learningtime.png");
+            CreateNewEventType("learning time", "\\images\\learningtime.png");
+            CreateNewEventType("learning", "\\images\\learningtime.png");
+            CreateNewEventType("library", "\\images\\library.png");
+            CreateNewEventType("lunchdinner", "\\images\\lunchdinner.png");
+            CreateNewEventType("lunch", "\\images\\lunchdinner.png");
+            CreateNewEventType("dinner", "\\images\\lunchdinner.png");
+            CreateNewEventType("lunchsnack", "\\images\\lunchsnack.png");
+            CreateNewEventType("makebed", "\\images\\makebed.png");
+            CreateNewEventType("make bed", "\\images\\makebed.png");
+            CreateNewEventType("music", "\\images\\music.png");
+            CreateNewEventType("question", "\\images\\question.png");
+            CreateNewEventType("readingastory", "\\images\\readingastory.png");
+            CreateNewEventType("reading a story", "\\images\\readingastory.png");
+            CreateNewEventType("read a story", "\\images\\readingastory.png");
+            CreateNewEventType("read story", "\\images\\readingastory.png");
+            CreateNewEventType("story", "\\images\\readingastory.png");
+            CreateNewEventType("readingtime", "\\images\\readingtime.png");
+            CreateNewEventType("reading time", "\\images\\readingtime.png");
+            CreateNewEventType("reading", "\\images\\readingtime.png");
+            CreateNewEventType("read", "\\images\\readingtime.png");
+            CreateNewEventType("recess", "\\images\\recess.png");
+            CreateNewEventType("snack", "\\images\\snack.png");
+            CreateNewEventType("teachtowntime", "\\images\\teachtown.png");
+            CreateNewEventType("teachtown", "\\images\\teachtown.png");
+            CreateNewEventType("teach town", "\\images\\music.png");
 
         }
 

@@ -87,19 +87,31 @@
     <Content Include="ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="images\BATHROOM.jpg" />
-    <Content Include="images\BREAK.jpg" />
-    <Content Include="images\breakfast.jpg" />
-    <Content Include="images\BUS.jpg" />
-    <Content Include="images\DINNER.jpg" />
-    <Content Include="images\GETDRESSED.jpg" />
-    <Content Include="images\grilled-pork-chop-dinner-2008.jpg" />
-    <Content Include="images\LUNCH.jpg" />
-    <Content Include="images\schoolbus.jpg" />
-    <Content Include="images\SNACK.jpg" />
-    <Content Include="images\teachtownimages.png" />
-    <Content Include="images\TOYS.jpg" />
-    <Content Include="images\HANDS.jpg" />
+    <Content Include="images\bathroom.png" />
+    <Content Include="images\bathroombreak.png" />
+    <Content Include="images\break.png" />
+    <Content Include="images\bus.png" />
+    <Content Include="images\calendar.png" />
+    <Content Include="images\car.png" />
+    <Content Include="images\circletime.png" />
+    <Content Include="images\computer.png" />
+    <Content Include="images\computertime.png" />
+    <Content Include="images\exercise.png" />
+    <Content Include="images\getdressed.png" />
+    <Content Include="images\learningtime.png" />
+    <Content Include="images\library.png" />
+    <Content Include="images\lunchdinner.png" />
+    <Content Include="images\lunchsnack.png" />
+    <Content Include="images\makebed.png" />
+    <Content Include="images\music.png" />
+    <Content Include="images\question.png" />
+    <Content Include="images\readingastory.png" />
+    <Content Include="images\readingtime.png" />
+    <Content Include="images\recess.png" />
+    <Content Include="images\snack.png" />
+    <Content Include="images\teachtowntime.png" />
+    <Content Include="images\toys.png" />
+    <Content Include="images\washhands.png" />
     <Content Include="SplashScreenImage.jpg" />
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
