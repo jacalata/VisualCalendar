@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
-  <App xmlns="" ProductID="{36de5fba-5b5e-4c1c-94b0-e1a0486a4cb1}" Title="WP7 Visual Calendar" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="DataBoundApp2 author" Description="Simple distraction free images to show a child what they are supposed to be doing now. Shows the current scheduled activity as an image, with next and previous activities visible to either side. " Publisher="DataBoundApp2" BitsPerPixel="32">
+  <App xmlns="" ProductID="{36de5fba-5b5e-4c1c-94b0-e1a0486a4cb1}" Title="Visual Calendar" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="DataBoundApp2 author" Description="Simple distraction free images to show a child what they are supposed to be doing now. Shows the current scheduled activity as an image, with next and previous activities visible to either side. " Publisher="DataBoundApp2" BitsPerPixel="32">
     <IconPath IsRelative="true" IsResource="false">appIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_APPOINTMENTS" />

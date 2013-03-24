@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBoundApp2", "DataBoundApp2\DataBoundApp2.csproj", "{36DE5FBA-5B5E-4C1C-94B0-E1A0486A4CB1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualCalendarWP7", "DataBoundApp2\VisualCalendarWP7.csproj", "{36DE5FBA-5B5E-4C1C-94B0-E1A0486A4CB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

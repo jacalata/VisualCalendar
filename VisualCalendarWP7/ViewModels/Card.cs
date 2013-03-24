@@ -107,7 +107,9 @@ namespace DataBoundApp2.ViewModels
             // for each event returned, if the title contains VisualCalendar, then
             foreach (Appointment item in appointments)
             {
-
+                //BUG: not sure why we're getting these null items?
+                if (item.Subject == null)
+                    continue;
                 Card newCard = new Card(item.Subject);
                 if (item.EndTime < DateTime.Now)
                 {
