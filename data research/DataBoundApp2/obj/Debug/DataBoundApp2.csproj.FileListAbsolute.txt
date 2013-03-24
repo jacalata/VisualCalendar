@@ -56,3 +56,4 @@ C:\Users\jafitzge\Dropbox\code\VisualCalendar\data research\DataBoundApp2\Bin\De
 C:\Users\jafitzge\Dropbox\code\VisualCalendar\data research\DataBoundApp2\obj\Debug\DataBoundApp2.dll
 C:\Users\jafitzge\Dropbox\code\VisualCalendar\data research\DataBoundApp2\obj\Debug\DataBoundApp2.pdb
 C:\Users\jafitzge\Dropbox\code\VisualCalendar\data research\DataBoundApp2\obj\Debug\XapCacheFile.xml
+C:\Users\jafitzge\Dropbox\code\VisualCalendar\data research\DataBoundApp2\obj\Debug\DataBoundApp2.csprojResolveAssemblyReference.cache
