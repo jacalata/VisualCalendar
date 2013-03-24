@@ -25,10 +25,6 @@ namespace VisualCalendar
             MainListBox.DataContext = App.CardSet.currentCards;
         }
 
-        public void OnNavigatedTo()
-        {
-        }
-
         // Handle selection changed on LongListSelector
         private void MainListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -39,6 +35,12 @@ namespace VisualCalendar
             // Reset selected item to null (no selection)
             MainListBox.SelectedItem = null;
 
+        }
+        
+        // we only have the Settings page, so if we get here, remove it from the back stack. 
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            this.NavigationService.RemoveBackEntry();
         }
     }
 }

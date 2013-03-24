@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq; //Ienumerable.Count
 using Microsoft.Phone.UserData; //calendar data
 using Microsoft.Phone.Controls;
+using System.IO.IsolatedStorage; //persist setting to phone
 using Microsoft.Phone.Shell;
 
 namespace VisualCalendar.ViewModels
@@ -37,7 +38,10 @@ namespace VisualCalendar.ViewModels
     public class Cards
     {
         private List<Card> cards;
-        Appointments appointments = new Appointments();
+        private Appointments appointments = new Appointments();
+
+        public Account account;
+        public bool AccountWasChosen;
         public ObservableCollection<Card> currentCards;
         public Card prevCard;
         public Card currentCard;
@@ -47,6 +51,18 @@ namespace VisualCalendar.ViewModels
         {
             cards = new List<Card>();
             currentCards = new ObservableCollection<Card>();
+            if (IsolatedStorageSettings.ApplicationSettings.Contains(App.SelectedAccount))
+            {
+                string accountname = "";
+                IsolatedStorageSettings.ApplicationSettings.TryGetValue(App.SelectedAccount, out accountname);
+                List<Account> accounts = new List<Account>(new Appointments().Accounts);
+                foreach (Account acct in accounts)
+                {
+                    if (acct.Name.Equals(accountname) )
+                        account = acct;
+                }
+            }
+            AccountWasChosen = false;
         }
 
         public void Add(Card card)
@@ -77,7 +93,7 @@ namespace VisualCalendar.ViewModels
                 appts.SearchAsync(start, end, 20, acct, "Appointments Test " + acct.Kind.ToString());
             }
              */
-            appointments.SearchAsync(DateTime.Today.AddDays(-1), DateTime.Today.AddDays(2), null); // find all events today
+            appointments.SearchAsync(DateTime.Today.AddDays(-1), DateTime.Today.AddDays(2), account, null); // find all events today
         }
 
         // on load, we searched the calendar for all of today's events. Now we got them as an enumerator
@@ -148,25 +164,59 @@ namespace VisualCalendar.ViewModels
     // canonical list of known event types and images for eachs
     public static class CardMapping
     {
-        private static string unknownEventImage = "\\images\\BREAK.jpg";
+        private static string unknownEventImage = "\\images\\question.png";
 
         static CardMapping()
         {
-            CreateNewEventType("unscheduled", "\\images\\BREAK.jpg");
-            CreateNewEventType("bus", "\\images\\BUS.jpg");
-            CreateNewEventType("snack", "\\images\\SNACK.jpg");
-            CreateNewEventType("toys", "\\images\\TOYS.jpg");
-            CreateNewEventType("breakfast", "\\images\\breakfast.jpg");
-            CreateNewEventType("dinner", "\\images\\dinner.jpg");
-            CreateNewEventType("lunch", "\\images\\lunch.jpg");
-            CreateNewEventType("get dressed", "\\images\\getdressed.jpg");
-            CreateNewEventType("bathroom", "\\images\\bathrom.jpg");
+            CreateNewEventType("bathroom", "\\images\\bathroombreak.png");
+            CreateNewEventType("bathroombreak", "\\images\\bathroombreak.png");
+            CreateNewEventType("bathroom break", "\\images\\bathroombreak.png");
+            CreateNewEventType("break", "\\images\\break.png");
+            CreateNewEventType("bus", "\\images\\bus.png");
+            CreateNewEventType("calendar", "\\images\\calendar.png");
+            CreateNewEventType("car", "\\images\\car.png");
+            CreateNewEventType("circle", "\\images\\circletime.png");
+            CreateNewEventType("circle time", "\\images\\circletime.png");
+            CreateNewEventType("circletime", "\\images\\circletime.png");
+            CreateNewEventType("computer", "\\images\\computer.png");
+            CreateNewEventType("computer time", "\\images\\computertime.png");
+            CreateNewEventType("dinner", "\\images\\lunchdinner.png");
+            CreateNewEventType("getdressed", "\\images\\getdressed.png");
+            CreateNewEventType("get dressed", "\\images\\getdressed.png");
+            CreateNewEventType("learningtime", "\\images\\learningtime.png");
+            CreateNewEventType("learning time", "\\images\\learningtime.png");
+            CreateNewEventType("learning", "\\images\\learningtime.png");
+            CreateNewEventType("library", "\\images\\library.png");
+            CreateNewEventType("lunchdinner", "\\images\\lunchdinner.png");
+            CreateNewEventType("lunch", "\\images\\lunchdinner.png");
+            CreateNewEventType("lunchsnack", "\\images\\lunchsnack.png");
+            CreateNewEventType("makebed", "\\images\\makebed.png");
+            CreateNewEventType("make bed", "\\images\\makebed.png");
+            CreateNewEventType("music", "\\images\\music.png");
+            CreateNewEventType("question", "\\images\\question.png");
+            CreateNewEventType("readingastory", "\\images\\readingastory.png");
+            CreateNewEventType("reading a story", "\\images\\readingastory.png");
+            CreateNewEventType("read a story", "\\images\\readingastory.png");
+            CreateNewEventType("read story", "\\images\\readingastory.png");
+            CreateNewEventType("story", "\\images\\readingastory.png");
+            CreateNewEventType("readingtime", "\\images\\readingtime.png");
+            CreateNewEventType("reading time", "\\images\\readingtime.png");
+            CreateNewEventType("reading", "\\images\\readingtime.png");
+            CreateNewEventType("read", "\\images\\readingtime.png");
+            CreateNewEventType("recess", "\\images\\recess.png");
+            CreateNewEventType("snack", "\\images\\snack.png");
+            CreateNewEventType("teachtowntime", "\\images\\teachtown.png");
+            CreateNewEventType("teachtown", "\\images\\teachtown.png");
+            CreateNewEventType("teach town", "\\images\\music.png");
+            CreateNewEventType("unscheduled", "\\images\\break.png");
             CreateNewEventType("wash hands", "\\images\\hands.jpg");
         }
 
         private static void CreateNewEventType(string title, string imageUri)
         {
             // a card might require multiple keywords to be present ('make bed', 'wash hands') 
+            if (knownEvents.Contains(title))
+                return; // can't add it twice, let's go with the first image they used. 
             knownEvents.Add(title.ToLower());
             imageMappings.Add(title, imageUri);
         }

@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO.IsolatedStorage;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using VisualCalendar.ViewModels;
@@ -19,6 +20,7 @@ namespace VisualCalendar
     public partial class App : Application
     {
         private static Cards _cardSet = null;
+        public static string SelectedAccount = "Account"; //keyword for isolated storage 
 
         /// <summary>
         /// A static ViewModel used by the views to bind against.
@@ -76,7 +78,30 @@ namespace VisualCalendar
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
+            // handle redirecting to settings if needed
+            RootFrame.Navigating += new NavigatingCancelEventHandler(RootFrame_Navigating);
+
         }
+
+        // http://blogs.msdn.com/b/ptorr/archive/2010/08/28/redirecting-an-initial-navigation.aspx?wa=wsignin1.0
+        private void RootFrame_Navigating(object sender, NavigatingCancelEventArgs e)
+        {
+
+            // Only care about intercepting the MainPage if we haven't chosen an account yet
+            if (e.Uri.ToString().Contains("/MainPage.xaml") != true 
+                || IsolatedStorageSettings.ApplicationSettings.Contains(App.SelectedAccount) )
+                return;
+            // Cancel current navigation and schedule the real navigation for the next tick
+            // (we can't navigate immediately as that will fail; no overlapping navigations
+            // are allowed)
+            e.Cancel = true;
+            RootFrame.Dispatcher.BeginInvoke(delegate
+            {
+                 RootFrame.Navigate(new Uri("/Settings.xaml", UriKind.Relative));
+            });
+
+        }
+
 
         // Code to execute when the application is launching (eg, from Start)
         // This code will not execute when the application is reactivated
